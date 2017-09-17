@@ -1,0 +1,14 @@
+{
+  "name": "js-test-homework",
+  "version": "1.0.0",
+  "description": "It's homework",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha tests/"
+  },
+  "author": "AllenYu",
+  "license": "ISC"
+}
