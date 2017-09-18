@@ -17,7 +17,7 @@ ShoppingCart.prototype.getTotalPrice = function (products) {
         case "VIP":
             return totalPrice >= 500 ? totalPrice * 0.8 : totalPrice;
         default:
-            return totalPrice >= 1000 && products.length >= 3 ? totalPrice * 0.85 : totalPrice;
+            return totalPrice >= 1000 && products.length > 3 ? totalPrice * 0.85 : totalPrice;
     }
 
 };
