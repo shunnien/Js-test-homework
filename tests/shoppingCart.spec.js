@@ -6,44 +6,57 @@ const ShoppingCart = require('../src/shoppingCart');
 chai.should();
 
 describe('shoppingCart', () => {
-    describe('#getTotalPrice', () => {
-        it(' VIP 會員，購物 499 元，沒有優惠', () => {
-            // Arrange
-            const dataset = [{
-                productName: 'AAA',
+    const vipDataset = [{
+            products: [{
                 unitPrice: 499,
                 quantity: 1
-            }];
-            const expected = 499;
-            let actual = 0;
-            let shoppinCart = new ShoppingCart();
-
-            shoppinCart.getMemberType = sinon.stub().returns('VIP');
-
-            // Act
-            actual = shoppinCart.getTotalPrice(dataset);
-
-            // Assert
-            actual.should.equal(expected);
-        });
-        it(' VIP 會員，購物滿 500 元，有 8 折優惠，總金額應為 400 元', () => {
-            // Arrange
-            const dataset = [{
-                productName: 'AAA',
+            }],
+            expected: 499
+        },
+        {
+            products: [{
                 unitPrice: 500,
                 quantity: 1
-            }];
-            const expected = 400;
-            let actual = 0;
-            let shoppinCart = new ShoppingCart();
+            }],
+            expected: 400
+        },
+        {
+            products: [{
+                unitPrice: 200,
+                quantity: 1
+            }, {
+                unitPrice: 100,
+                quantity: 1
+            }, {
+                unitPrice: 100,
+                quantity: 1
+            }],
+            expected: 400
+        }
+    ];
 
-            shoppinCart.getMemberType = sinon.stub().returns('VIP');
+    vipDataset.forEach(function (element) {
+
+        const productsTotalPrice = () => {
+            let result = 0;
+            if (element && Array.isArray(element.products)) {
+                element.products.forEach(function (item) {
+                    result += item.unitPrice * item.quantity;
+                });
+            }
+            return result;
+        };
+        it(` VIP 會員，購物 ${element.products.length} 項共 ${productsTotalPrice()} 元，折扣後應為 ${element.expected} 元`, () => {
+            // Arrange
+            let shoppingCart = new ShoppingCart();
+            shoppingCart.getMemberType = sinon.stub().returns('VIP');
 
             // Act
-            actual = shoppinCart.getTotalPrice(dataset);
+            let actual = shoppingCart.getTotalPrice(element.products);
 
             // Assert
-            actual.should.equal(expected);
+            actual.should.equal(element.expected);
+
         });
     });
 });
