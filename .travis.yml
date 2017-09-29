@@ -2,7 +2,8 @@ language: node_js
 node_js:
     - "8"
 before_install:
-  - npm install mocha -g
-  - npm install coveralls -g
-  - npm install mocha-lcov-reporter -g
-script: npm run-script coveralls
+  - npm install
+script:
+  - npm test
+after_script:
+  - npm run coverage
