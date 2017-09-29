@@ -1,5 +1,7 @@
 # JavaScript 測試實務 Homework
 
+[![Build Status](https://travis-ci.org/shunnien/Js-test-homework.svg?branch=master)](https://travis-ci.org/shunnien/Js-test-homework)
+
 建立一個**購物車**應用程式，必須要能夠根據會員的等級，提供不同的折扣方式。
 - 如果是 **VIP** 會員，只要購物滿 **500** 元，就一律有 **8** 折優惠
 - 如果是**一般會員** ( Normal ) ， 除了購物必須要滿 **1000** 元，而且購買超過 **3** 件商品才能擁有 **85** 折優惠
