@@ -8,7 +8,8 @@
   },
   "scripts": {
     "test": "mocha tests/",
-    "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- tests/"
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- tests/",
+    "coveralls": "mocha tests/node-test.js -R mocha-lcov-reporter -r jscoverage | coveralls"
   },
   "author": "AllenYu",
   "license": "ISC",
