@@ -1,7 +1,5 @@
 function ShoppingCart() {}
 
-
-
 ShoppingCart.prototype.getMemberType = function () {
     return "";
 };
@@ -13,6 +11,8 @@ ShoppingCart.prototype.getTotalPrice = function (products) {
             totalPrice += element.unitPrice * element.quantity;
         }
     }, this);
+    console.log("test");
+
     switch (this.getMemberType()) {
         case "VIP":
             return totalPrice >= 500 ? totalPrice * 0.8 : totalPrice;
